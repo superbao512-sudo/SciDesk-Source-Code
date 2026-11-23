@@ -1,0 +1,257 @@
+[
+  {
+    "name": "Communications Materials",
+    "issns": [
+      "2662-4443"
+    ],
+    "file": "/journals/commmat.svg",
+    "source": "https://media.springernature.com/full/nature-cms/uploads/product/commsmat/header-46fd74ebd202b3dc03ee762b7e858054.svg",
+    "page": "https://www.nature.com/commsmat/",
+    "kind": "journal"
+  },
+  {
+    "name": "Communications Physics",
+    "issns": [
+      "2399-3650"
+    ],
+    "file": "/journals/commphys.svg",
+    "source": "https://media.springernature.com/full/nature-cms/uploads/product/commsphys/header-5e713802fd12237634cf2633cdc6a508.svg",
+    "page": "https://www.nature.com/commsphys/",
+    "kind": "journal"
+  },
+  {
+    "name": "Computer Physics Communications",
+    "issns": [
+      "0010-4655"
+    ],
+    "file": "/journals/elsevier.png",
+    "source": "https://journalissues.elsevier.com/sites/journalissues.elsevier.com/files/ELS_NonSolus_Logo.png",
+    "page": "https://www.sciencedirect.com/journal/computer-physics-communications",
+    "kind": "publisher"
+  },
+  {
+    "name": "Journal of Physics: Condensed Matter",
+    "issns": [
+      "0953-8984"
+    ],
+    "file": "/journals/iop.jpg",
+    "source": "https://cdn.images.iop.org/website-logos/IOP-Publishing-300x83.jpg",
+    "page": "https://iopscience.iop.org/journal/0953-8984",
+    "kind": "publisher"
+  },
+  {
+    "name": "Nature",
+    "issns": [
+      "0028-0836",
+      "1476-4687"
+    ],
+    "file": "/journals/nature.svg",
+    "source": "https://media.springernature.com/full/nature-cms/uploads/product/nature/header-86f1267ea01eccd46b530284be10585e.svg",
+    "page": "https://www.nature.com/nature/",
+    "kind": "journal"
+  },
+  {
+    "name": "Nature Communications",
+    "issns": [
+      "2041-1723"
+    ],
+    "file": "/journals/ncomms.svg",
+    "source": "https://media.springernature.com/full/nature-cms/uploads/product/ncomms/header-7001f06bc3fe2437048388e9f2f44215.svg",
+    "page": "https://www.nature.com/ncomms/",
+    "kind": "journal"
+  },
+  {
+    "name": "Nature Materials",
+    "issns": [
+      "1476-1122"
+    ],
+    "file": "/journals/nmat.svg",
+    "source": "https://media.springernature.com/full/nature-cms/uploads/product/nmat/header-80d384455b83ea3c6394c62ec2bf3e14.svg",
+    "page": "https://www.nature.com/nmat/",
+    "kind": "journal"
+  },
+  {
+    "name": "Nature Nanotechnology",
+    "issns": [
+      "1748-3387",
+      "1748-3395"
+    ],
+    "file": "/journals/nnano.svg",
+    "source": "https://media.springernature.com/full/nature-cms/uploads/product/nnano/header-54abc6ee1501da0309a7fd5756486548.svg",
+    "page": "https://www.nature.com/nnano/",
+    "kind": "journal"
+  },
+  {
+    "name": "Nature Physics",
+    "issns": [
+      "1745-2473"
+    ],
+    "file": "/journals/nphys.svg",
+    "source": "https://media.springernature.com/full/nature-cms/uploads/product/nphys/header-de20aedc63fc84540c5d069575af4aa2.svg",
+    "page": "https://www.nature.com/nphys/",
+    "kind": "journal"
+  },
+  {
+    "name": "New Journal of Physics",
+    "issns": [
+      "1367-2630"
+    ],
+    "file": "/journals/iop.jpg",
+    "source": "https://cdn.images.iop.org/website-logos/IOP-Publishing-300x83.jpg",
+    "page": "https://iopscience.iop.org/journal/1367-2630",
+    "kind": "publisher"
+  },
+  {
+    "name": "npj Computational Materials",
+    "issns": [
+      "2057-3960"
+    ],
+    "file": "/journals/npjcm.svg",
+    "source": "https://media.springernature.com/full/nature-cms/uploads/product/npjcompumats/header-4baba14304e9c3518bdc0d6f35b470b9.svg",
+    "page": "https://www.nature.com/npjcompumats/",
+    "kind": "journal"
+  },
+  {
+    "name": "npj Quantum Materials",
+    "issns": [
+      "2397-4648"
+    ],
+    "file": "/journals/npjqm.svg",
+    "source": "https://media.springernature.com/full/nature-cms/uploads/product/npjquantmats/header-88a4eeb6bd2307affbfe8dd3f294d7ec.svg",
+    "page": "https://www.nature.com/npjquantmats/",
+    "kind": "journal"
+  },
+  {
+    "name": "Physical Review Applied",
+    "issns": [
+      "2331-7019"
+    ],
+    "file": "/journals/aps.svg",
+    "source": "https://journals.aps.org/images/aps-logo.svg",
+    "page": "https://journals.aps.org/prapplied/",
+    "kind": "publisher"
+  },
+  {
+    "name": "Physical Review B",
+    "issns": [
+      "1098-0121",
+      "1550-235X",
+      "0163-1829",
+      "0556-2805",
+      "1095-3795",
+      "2469-9950",
+      "2469-9969"
+    ],
+    "file": "/journals/aps.svg",
+    "source": "https://journals.aps.org/images/aps-logo.svg",
+    "page": "https://journals.aps.org/prb/",
+    "kind": "publisher"
+  },
+  {
+    "name": "Physical Review E",
+    "issns": [
+      "1539-3755",
+      "1550-2376",
+      "1063-651X",
+      "1095-3787",
+      "2470-0045",
+      "2470-0053"
+    ],
+    "file": "/journals/aps.svg",
+    "source": "https://journals.aps.org/images/aps-logo.svg",
+    "page": "https://journals.aps.org/pre/",
+    "kind": "publisher"
+  },
+  {
+    "name": "Physical Review Letters",
+    "issns": [
+      "0031-9007",
+      "1079-7114"
+    ],
+    "file": "/journals/aps.svg",
+    "source": "https://journals.aps.org/images/aps-logo.svg",
+    "page": "https://journals.aps.org/prl/",
+    "kind": "publisher"
+  },
+  {
+    "name": "Physical Review Materials",
+    "issns": [
+      "2475-9953"
+    ],
+    "file": "/journals/aps.svg",
+    "source": "https://journals.aps.org/images/aps-logo.svg",
+    "page": "https://journals.aps.org/prmaterials/",
+    "kind": "publisher"
+  },
+  {
+    "name": "Physical Review Research",
+    "issns": [
+      "2643-1564"
+    ],
+    "file": "/journals/aps.svg",
+    "source": "https://journals.aps.org/images/aps-logo.svg",
+    "page": "https://journals.aps.org/prresearch/",
+    "kind": "publisher"
+  },
+  {
+    "name": "Physical Review X",
+    "issns": [
+      "2160-3308"
+    ],
+    "file": "/journals/aps.svg",
+    "source": "https://journals.aps.org/images/aps-logo.svg",
+    "page": "https://journals.aps.org/prx/",
+    "kind": "publisher"
+  },
+  {
+    "name": "PRX Quantum",
+    "issns": [
+      "2691-3399"
+    ],
+    "file": "/journals/aps.svg",
+    "source": "https://journals.aps.org/images/aps-logo.svg",
+    "page": "https://journals.aps.org/prxquantum/",
+    "kind": "publisher"
+  },
+  {
+    "name": "Reviews of Modern Physics",
+    "issns": [
+      "0034-6861",
+      "1539-0756"
+    ],
+    "file": "/journals/aps.svg",
+    "source": "https://journals.aps.org/images/aps-logo.svg",
+    "page": "https://journals.aps.org/rmp/",
+    "kind": "publisher"
+  },
+  {
+    "name": "Science",
+    "issns": [
+      "0036-8075",
+      "1095-9203"
+    ],
+    "file": "/journals/science.jpg",
+    "source": "https://www.bio-hk.com/images/Home_Page/row1/science.jpg",
+    "page": "https://www.bio-hk.com/",
+    "kind": "journal"
+  },
+  {
+    "name": "Science Advances",
+    "issns": [
+      "2375-2548",
+      "2375-2548"
+    ],
+    "file": "/journals/sciadv.png",
+    "source": "https://www.pvamu.edu/research/wp-content/uploads/sites/60/science-advances-vector-logo.png",
+    "page": "https://www.pvamu.edu/research/post/seungchan-kim-co-leads-groundbreaking-research-in-pulmonary-hypertension/science-advances-vector-logo/",
+    "kind": "journal"
+  },
+  {
+    "name": "arXiv",
+    "issns": [],
+    "file": "/journals/arxiv.svg",
+    "source": "https://static.arxiv.org/static/design-system/latest/logos/arxiv-logo.svg",
+    "page": "https://arxiv.org/",
+    "kind": "source"
+  }
+]

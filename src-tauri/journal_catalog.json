@@ -1,0 +1,387 @@
+[
+  {
+    "id": "nature",
+    "name": "Nature",
+    "shortName": "Nature",
+    "issn": "0028-0836",
+    "publisher": "Springer Science and Business Media LLC",
+    "websiteUrl": "https://www.nature.com/nature/",
+    "group": "综合期刊",
+    "source": "https://api.crossref.org/journals/0028-0836",
+    "verifiedTitle": "Nature",
+    "issnPrint": "0028-0836",
+    "issnOnline": null,
+    "issnAliases": [
+      "0028-0836",
+      "1476-4687"
+    ]
+  },
+  {
+    "id": "science",
+    "name": "Science",
+    "shortName": "Science",
+    "issn": "0036-8075",
+    "publisher": "American Association for the Advancement of Science (AAAS)",
+    "websiteUrl": "https://www.science.org/journal/science",
+    "group": "综合期刊",
+    "source": "https://api.crossref.org/journals/0036-8075",
+    "verifiedTitle": "Science",
+    "issnPrint": "0036-8075",
+    "issnOnline": null,
+    "issnAliases": [
+      "0036-8075",
+      "1095-9203"
+    ]
+  },
+  {
+    "id": "nphys",
+    "name": "Nature Physics",
+    "shortName": "Nat Phys",
+    "issn": "1745-2473",
+    "publisher": "Springer Science and Business Media LLC",
+    "websiteUrl": "https://www.nature.com/nphys/",
+    "group": "Nature 系列",
+    "source": "https://api.crossref.org/journals/1745-2473",
+    "verifiedTitle": "Nature Physics",
+    "issnPrint": "1745-2473",
+    "issnOnline": null,
+    "issnAliases": [
+      "1745-2473"
+    ]
+  },
+  {
+    "id": "nmat",
+    "name": "Nature Materials",
+    "shortName": "Nat Mater",
+    "issn": "1476-1122",
+    "publisher": "Springer Science and Business Media LLC",
+    "websiteUrl": "https://www.nature.com/nmat/",
+    "group": "Nature 系列",
+    "source": "https://api.crossref.org/journals/1476-1122",
+    "verifiedTitle": "Nature Materials",
+    "issnPrint": "1476-1122",
+    "issnOnline": null,
+    "issnAliases": [
+      "1476-1122"
+    ]
+  },
+  {
+    "id": "nnano",
+    "name": "Nature Nanotechnology",
+    "shortName": "Nat Nano",
+    "issn": "1748-3387",
+    "publisher": "Springer Science and Business Media LLC",
+    "websiteUrl": "https://www.nature.com/nnano/",
+    "group": "Nature 系列",
+    "source": "https://api.crossref.org/journals/1748-3387",
+    "verifiedTitle": "Nature Nanotechnology",
+    "issnPrint": "1748-3387",
+    "issnOnline": null,
+    "issnAliases": [
+      "1748-3387",
+      "1748-3395"
+    ]
+  },
+  {
+    "id": "ncomms",
+    "name": "Nature Communications",
+    "shortName": "Nat Commun",
+    "issn": "2041-1723",
+    "publisher": "Springer Science and Business Media LLC",
+    "websiteUrl": "https://www.nature.com/ncomms/",
+    "group": "Nature 系列",
+    "source": "https://api.crossref.org/journals/2041-1723",
+    "verifiedTitle": "Nature Communications",
+    "issnPrint": null,
+    "issnOnline": "2041-1723",
+    "issnAliases": [
+      "2041-1723"
+    ]
+  },
+  {
+    "id": "npjcm",
+    "name": "npj Computational Materials",
+    "shortName": "npj Comp Mat",
+    "issn": "2057-3960",
+    "publisher": "Springer Science and Business Media LLC",
+    "websiteUrl": "https://www.nature.com/npjcompumats/",
+    "group": "Nature 系列",
+    "source": "https://api.crossref.org/journals/2057-3960",
+    "verifiedTitle": "npj Computational Materials",
+    "issnPrint": null,
+    "issnOnline": "2057-3960",
+    "issnAliases": [
+      "2057-3960"
+    ]
+  },
+  {
+    "id": "npjqm",
+    "name": "npj Quantum Materials",
+    "shortName": "npj Quantum",
+    "issn": "2397-4648",
+    "publisher": "Springer Science and Business Media LLC",
+    "websiteUrl": "https://www.nature.com/npjquantmats/",
+    "group": "Nature 系列",
+    "source": "https://api.crossref.org/journals/2397-4648",
+    "verifiedTitle": "npj Quantum Materials",
+    "issnPrint": null,
+    "issnOnline": "2397-4648",
+    "issnAliases": [
+      "2397-4648"
+    ]
+  },
+  {
+    "id": "commphys",
+    "name": "Communications Physics",
+    "shortName": "Commun Phys",
+    "issn": "2399-3650",
+    "publisher": "Springer Science and Business Media LLC",
+    "websiteUrl": "https://www.nature.com/commsphys/",
+    "group": "Nature 系列",
+    "source": "https://api.crossref.org/journals/2399-3650",
+    "verifiedTitle": "Communications Physics",
+    "issnPrint": null,
+    "issnOnline": "2399-3650",
+    "issnAliases": [
+      "2399-3650"
+    ]
+  },
+  {
+    "id": "commmat",
+    "name": "Communications Materials",
+    "shortName": "Commun Mater",
+    "issn": "2662-4443",
+    "publisher": "Springer Science and Business Media LLC",
+    "websiteUrl": "https://www.nature.com/commsmat/",
+    "group": "Nature 系列",
+    "source": "https://api.crossref.org/journals/2662-4443",
+    "verifiedTitle": "Communications Materials",
+    "issnPrint": null,
+    "issnOnline": "2662-4443",
+    "issnAliases": [
+      "2662-4443"
+    ]
+  },
+  {
+    "id": "sciadv",
+    "name": "Science Advances",
+    "shortName": "Sci Adv",
+    "issn": "2375-2548",
+    "publisher": "American Association for the Advancement of Science (AAAS)",
+    "websiteUrl": "https://www.science.org/journal/sciadv",
+    "group": "综合期刊",
+    "source": "https://api.crossref.org/journals/2375-2548",
+    "verifiedTitle": "Science Advances",
+    "issnPrint": null,
+    "issnOnline": "2375-2548",
+    "issnAliases": [
+      "2375-2548",
+      "2375-2548"
+    ]
+  },
+  {
+    "id": "prl",
+    "name": "Physical Review Letters",
+    "shortName": "PRL",
+    "issn": "0031-9007",
+    "publisher": "American Physical Society",
+    "websiteUrl": "https://journals.aps.org/prl/",
+    "group": "APS / PR 系列",
+    "source": "https://api.crossref.org/journals/0031-9007",
+    "verifiedTitle": "Physical Review Letters",
+    "issnPrint": "0031-9007",
+    "issnOnline": null,
+    "issnAliases": [
+      "0031-9007",
+      "1079-7114"
+    ]
+  },
+  {
+    "id": "prb",
+    "name": "Physical Review B",
+    "shortName": "PRB",
+    "issn": "2469-9950",
+    "publisher": "American Physical Society",
+    "websiteUrl": "https://journals.aps.org/prb/",
+    "group": "APS / PR 系列",
+    "source": "https://api.crossref.org/journals/2469-9950",
+    "verifiedTitle": "Physical Review B",
+    "issnPrint": "2469-9950",
+    "issnOnline": null,
+    "issnAliases": [
+      "1098-0121",
+      "1550-235X",
+      "0163-1829",
+      "0556-2805",
+      "1095-3795",
+      "2469-9950",
+      "2469-9969"
+    ]
+  },
+  {
+    "id": "prx",
+    "name": "Physical Review X",
+    "shortName": "PRX",
+    "issn": "2160-3308",
+    "publisher": "American Physical Society",
+    "websiteUrl": "https://journals.aps.org/prx/",
+    "group": "APS / PR 系列",
+    "source": "https://api.crossref.org/journals/2160-3308",
+    "verifiedTitle": "Physical Review X",
+    "issnPrint": null,
+    "issnOnline": "2160-3308",
+    "issnAliases": [
+      "2160-3308"
+    ]
+  },
+  {
+    "id": "prresearch",
+    "name": "Physical Review Research",
+    "shortName": "PR Research",
+    "issn": "2643-1564",
+    "publisher": "American Physical Society",
+    "websiteUrl": "https://journals.aps.org/prresearch/",
+    "group": "APS / PR 系列",
+    "source": "https://api.crossref.org/journals/2643-1564",
+    "verifiedTitle": "Physical Review Research",
+    "issnPrint": null,
+    "issnOnline": "2643-1564",
+    "issnAliases": [
+      "2643-1564"
+    ]
+  },
+  {
+    "id": "prmaterials",
+    "name": "Physical Review Materials",
+    "shortName": "PR Materials",
+    "issn": "2475-9953",
+    "publisher": "American Physical Society",
+    "websiteUrl": "https://journals.aps.org/prmaterials/",
+    "group": "APS / PR 系列",
+    "source": "https://api.crossref.org/journals/2475-9953",
+    "verifiedTitle": "Physical Review Materials",
+    "issnPrint": null,
+    "issnOnline": "2475-9953",
+    "issnAliases": [
+      "2475-9953"
+    ]
+  },
+  {
+    "id": "prapplied",
+    "name": "Physical Review Applied",
+    "shortName": "PR Applied",
+    "issn": "2331-7019",
+    "publisher": "American Physical Society",
+    "websiteUrl": "https://journals.aps.org/prapplied/",
+    "group": "APS / PR 系列",
+    "source": "https://api.crossref.org/journals/2331-7019",
+    "verifiedTitle": "Physical Review Applied",
+    "issnPrint": null,
+    "issnOnline": "2331-7019",
+    "issnAliases": [
+      "2331-7019"
+    ]
+  },
+  {
+    "id": "prxquantum",
+    "name": "PRX Quantum",
+    "shortName": "PRX Quantum",
+    "issn": "2691-3399",
+    "publisher": "American Physical Society",
+    "websiteUrl": "https://journals.aps.org/prxquantum/",
+    "group": "APS / PR 系列",
+    "source": "https://api.crossref.org/journals/2691-3399",
+    "verifiedTitle": "PRX Quantum",
+    "issnPrint": null,
+    "issnOnline": "2691-3399",
+    "issnAliases": [
+      "2691-3399"
+    ]
+  },
+  {
+    "id": "rmp",
+    "name": "Reviews of Modern Physics",
+    "shortName": "RMP",
+    "issn": "0034-6861",
+    "publisher": "American Physical Society",
+    "websiteUrl": "https://journals.aps.org/rmp/",
+    "group": "APS / PR 系列",
+    "source": "https://api.crossref.org/journals/0034-6861",
+    "verifiedTitle": "Reviews of Modern Physics",
+    "issnPrint": "0034-6861",
+    "issnOnline": null,
+    "issnAliases": [
+      "0034-6861",
+      "1539-0756"
+    ]
+  },
+  {
+    "id": "pre",
+    "name": "Physical Review E",
+    "shortName": "PRE",
+    "issn": "2470-0045",
+    "publisher": "American Physical Society",
+    "websiteUrl": "https://journals.aps.org/pre/",
+    "group": "APS / PR 系列",
+    "source": "https://api.crossref.org/journals/2470-0045",
+    "verifiedTitle": "Physical Review E",
+    "issnPrint": "2470-0045",
+    "issnOnline": null,
+    "issnAliases": [
+      "1539-3755",
+      "1550-2376",
+      "1063-651X",
+      "1095-3787",
+      "2470-0045",
+      "2470-0053"
+    ]
+  },
+  {
+    "id": "cpc",
+    "name": "Computer Physics Communications",
+    "shortName": "CPC",
+    "issn": "0010-4655",
+    "publisher": "Elsevier",
+    "websiteUrl": "https://www.sciencedirect.com/journal/computer-physics-communications",
+    "group": "计算与凝聚态",
+    "source": "https://api.crossref.org/journals/0010-4655",
+    "verifiedTitle": "Computer Physics Communications",
+    "issnPrint": "0010-4655",
+    "issnOnline": null,
+    "issnAliases": [
+      "0010-4655"
+    ]
+  },
+  {
+    "id": "jpcm",
+    "name": "Journal of Physics: Condensed Matter",
+    "shortName": "JPCM",
+    "issn": "0953-8984",
+    "publisher": "IOP Publishing",
+    "websiteUrl": "https://iopscience.iop.org/journal/0953-8984",
+    "group": "计算与凝聚态",
+    "source": "https://api.crossref.org/journals/0953-8984",
+    "verifiedTitle": "Journal of Physics Condensed Matter",
+    "issnPrint": "0953-8984",
+    "issnOnline": null,
+    "issnAliases": [
+      "0953-8984"
+    ]
+  },
+  {
+    "id": "njp",
+    "name": "New Journal of Physics",
+    "shortName": "NJP",
+    "issn": "1367-2630",
+    "publisher": "IOP Publishing",
+    "websiteUrl": "https://iopscience.iop.org/journal/1367-2630",
+    "group": "计算与凝聚态",
+    "source": "https://api.crossref.org/journals/1367-2630",
+    "verifiedTitle": "New Journal of Physics",
+    "issnPrint": null,
+    "issnOnline": "1367-2630",
+    "issnAliases": [
+      "1367-2630"
+    ]
+  }
+]

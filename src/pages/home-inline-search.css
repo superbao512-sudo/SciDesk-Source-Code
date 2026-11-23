@@ -1,0 +1,21 @@
+.home-search-content{position:absolute;top:var(--search-top);left:0;width:100%;min-width:0;text-align:left}
+.home-search-content .home-hero-search{position:relative;top:auto}
+.home-search-content .home-hero-search input{cursor:text}
+.home-hero-search input::-webkit-search-cancel-button{display:none}
+.home-search-clear{display:grid;place-items:center;flex-shrink:0;width:28px;height:28px;border-radius:4px;color:var(--muted)}
+.home-search-clear:hover{background:var(--accent-soft);color:var(--accent-primary)}
+.home-search-content .home-greeting{position:relative;top:auto;margin-top:calc(var(--greeting-top) - var(--search-top) - var(--search-height));text-align:center}
+.home-search-results{position:relative;left:var(--search-center);transform:translateX(-50%);width:var(--search-width);max-width:calc(100% - 32px);margin-top:12px;padding:16px 20px;min-width:0;background:rgb(255 255 255 / 96%);color:var(--text-primary);overflow-wrap:anywhere;font-size:14px;line-height:1.6}
+.home-search-results>p{margin:0}
+.home-search-results section{margin-top:14px}
+.home-search-results .eyebrow{margin:0 0 6px;color:var(--muted)}
+.home-search-result{display:flex;align-items:flex-start;gap:10px;padding:10px 0;text-align:left;color:var(--text-primary)}
+.home-search-result+.home-search-result{border-top:1px solid var(--border)}
+.home-search-result:hover{color:var(--accent-primary)}
+.home-search-result>svg{flex-shrink:0;margin-top:3px}
+.home-search-result>span{min-width:0}
+.home-search-result small{display:block;margin-top:4px;color:var(--muted);font-size:12px;white-space:normal}
+.home-page:has(.home-search-results) .home-hero{overflow:auto;overscroll-behavior:contain}
+@media(max-width:1100px){.home-search-content .home-greeting{margin-top:calc(var(--greeting-top) - var(--search-top) - max(40px,var(--search-height)))}}
+@media(max-width:700px){.home-search-results{padding:14px 12px}}
+.home-subtitle-edit{font:inherit;letter-spacing:inherit;color:inherit;padding:0;max-width:100%;overflow-wrap:anywhere}.home-subtitle-edit:hover,.home-subtitle-edit:focus-visible{text-decoration:underline;text-underline-offset:.16em}

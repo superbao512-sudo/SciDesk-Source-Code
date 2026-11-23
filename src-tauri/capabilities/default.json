@@ -1,0 +1,12 @@
+{
+  "identifier": "main-capability",
+  "description": "Home window and isolated local metadata database",
+  "windows": [
+    "main"
+  ],
+  "permissions": [
+    "core:default",
+    "sql:allow-select",
+    "sql:allow-execute"
+  ]
+}

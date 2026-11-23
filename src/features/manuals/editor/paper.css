@@ -1,0 +1,8 @@
+.book-paper{box-sizing:border-box;max-width:54rem;margin:0 auto;padding:1.5rem 2.4rem 3rem;background:white;color:#233043;font:16px/1.8 "Segoe UI","Microsoft YaHei",sans-serif;overflow-wrap:anywhere}
+.book-paper h1,.book-paper h2,.book-paper h3,.book-paper h4{line-height:1.4;color:#172e48;break-after:avoid}
+.book-paper h1{font-size:1.85em;margin:.3em 0 .8em}.book-paper h2{font-size:1.4em;margin:1.5em 0 .55em}.book-paper h3{font-size:1.16em}
+.book-paper a{color:#215fa1;text-decoration:underline}.book-paper p{margin:.75em 0}.book-paper blockquote{margin:1em 0;padding:.25em 1em;border-left:3px solid #5695aa;background:#f1f6f8}
+.book-paper img{display:block;max-width:100%;max-height:65vh;object-fit:contain;margin:1em auto}.book-paper table{border-collapse:collapse;max-width:100%;font-size:.94em}.book-paper th,.book-paper td{border:1px solid #cbd6df;padding:.3em .7em}.book-paper th{background:#edf3f7}.book-paper code{font:.9em Consolas,monospace;background:#eef2f5;padding:.1em .25em}.book-paper pre{background:#eff3f5;padding:1em;overflow:auto;white-space:pre-wrap}.book-paper pre code{padding:0}.book-paper math[display=block]{display:block;margin:1em 0;overflow-x:auto}.book-paper .book-missing,.book-paper .katex-error{color:#963e28}
+.book-cover{border-bottom:1px solid #d3dce3;padding-bottom:1.5em}.book-chapter{padding-top:1.4em}.book-chapter+.book-chapter{border-top:1px solid #d3dce3;margin-top:2em}
+@page{size:A4;margin:17mm}
+@media print{.book-paper{max-width:none;margin:0;padding:0;font-size:11pt}.book-chapter{break-before:page;padding:0}.book-chapter+.book-chapter{border:0;margin:0}.book-paper img,.book-paper tr,.book-paper math{break-inside:avoid}.book-paper p{orphans:3;widows:3}.book-paper img{max-height:200mm}}

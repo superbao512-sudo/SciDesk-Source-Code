@@ -1,0 +1,16 @@
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import {HashRouter} from 'react-router-dom';
+import App from './app/App';
+import {KnowledgeProvider} from './store/KnowledgeProvider';
+import './styles.css';
+import './styles/accent.css';
+import './styles/application-appearance.css';
+import {isTauri} from '@tauri-apps/api/core';
+import {getCurrentWindow} from '@tauri-apps/api/window';
+const label=isTauri()?getCurrentWindow().label:'';
+const capture=label.startsWith('capture-'),pin=label.startsWith('pin-');
+if(capture||pin)document.documentElement.dataset.screenshot='true';
+const CaptureWindow=React.lazy(()=>import('./features/tools/screenshot/ScreenshotWindow').then(module=>({default:module.ScreenshotWindow})));
+const Pin=React.lazy(()=>import('./features/tools/screenshot/PinWindow').then(module=>({default:module.PinWindow})));
+ReactDOM.createRoot(document.getElementById('root')!).render(<React.StrictMode>{capture||pin?<React.Suspense fallback={null}>{capture?<CaptureWindow/>:<Pin/>}</React.Suspense>:<HashRouter><KnowledgeProvider><div className="startup-root startup-complete"><App/></div></KnowledgeProvider></HashRouter>}</React.StrictMode>);

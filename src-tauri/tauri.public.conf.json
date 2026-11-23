@@ -1,0 +1,20 @@
+{
+  "bundle": {
+    "active": true,
+    "targets": [
+      "nsis"
+    ],
+    "resources": {
+      "../docs/third-party/": "third-party/"
+    },
+    "windows": {
+      "nsis": {
+        "installMode": "currentUser",
+        "languages": [
+          "SimpChinese"
+        ],
+        "installerHooks": "installer-hooks.nsh"
+      }
+    }
+  }
+}

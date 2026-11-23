@@ -1,0 +1,40 @@
+use super::*;
+fn base()->PathBuf{PathBuf::from(env!("CARGO_MANIFEST_DIR")).parent().unwrap().join("development/verification/local-tools-rust").join(uuid::Uuid::new_v4().to_string())}
+fn manifest()->Value{json!({"schema_version":1,"id":"example.local-tool","name":"本地科研工具","version":"1.0.0","description":"简短说明","runtime":"html","entry":"index.html"})}
+fn package(root:&Path,value:&Value){fs::create_dir_all(root).unwrap();fs::write(root.join(MANIFEST),serde_json::to_vec(value).unwrap()).unwrap();fs::write(root.join("index.html"),"<!doctype html><meta charset='utf-8'><title>Local tool verification</title><h1>本地工具</h1>").unwrap()}
+#[tokio::test]
+async fn preview_register_update_remove_and_reopen_preserve_original_packages(){
+ let base=base();let root=base.join("原始工具");package(&root,&manifest());let store=Store::open(&base.join("metadata")).await.unwrap();let preview=store.preview_local(display(&root)).await.unwrap();assert_eq!(store.run("list",json!({})).await.unwrap().as_array().unwrap().len(),1);assert!(!store.root.join("data").exists());
+ let added=store.register_local(preview["root"].as_str().unwrap().into(),preview["token"].as_str().unwrap().into()).await.unwrap();let id=added["id"].as_str().unwrap();let again=store.preview_local(display(&root)).await.unwrap();assert_eq!(again["existing_id"],id);let second=store.register_local(again["root"].as_str().unwrap().into(),again["token"].as_str().unwrap().into()).await.unwrap();assert_eq!(second["id"],id);assert_eq!(store.run("list",json!({})).await.unwrap().as_array().unwrap().len(),2);store.pool.close().await;
+ let store=Store::open(&base.join("metadata")).await.unwrap();assert_eq!(store.get(id).await.unwrap().kind,"local");store.run("remove",json!({"id":id})).await.unwrap();assert!(root.join("index.html").is_file());assert!(root.join(MANIFEST).is_file());store.pool.close().await;
+}
+#[tokio::test]
+async fn changed_preview_or_registered_entry_cannot_launch_without_reload(){
+ let base=base();let root=base.join("package");package(&root,&manifest());let store=Store::open(&base.join("metadata")).await.unwrap();let first=store.preview_local(display(&root)).await.unwrap();fs::write(root.join("index.html"),"changed entry").unwrap();assert!(store.register_local(display(&root),first["token"].as_str().unwrap().into()).await.unwrap_err().contains("预览后"));
+ let next=store.preview_local(display(&root)).await.unwrap();let id=store.register_local(display(&root),next["token"].as_str().unwrap().into()).await.unwrap()["id"].as_str().unwrap().to_owned();fs::write(root.join("index.html"),"changed again").unwrap();assert!(store.run("open",json!({"id":id})).await.unwrap_err().contains("已更新"));store.pool.close().await;
+}
+#[test]
+fn malformed_manifests_and_escape_paths_are_rejected(){
+ let base=base();package(&base,&manifest());for (field,value) in [("entry",json!("../outside.html")),("entry",json!("E:\\outside.html")),("schema_version",json!(2)),("runtime",json!("powershell")),("id",json!("../bad")),("args",json!(["not valid for HTML"])),("entry",json!("absent.html")),("unknown",json!(true))]{let mut v=manifest();v[field]=value;fs::write(base.join(MANIFEST),serde_json::to_vec(&v).unwrap()).unwrap();assert!(read_package(&display(&base)).is_err(),"{field}")}
+ let mut bytes=b"\xef\xbb\xbf".to_vec();bytes.extend(serde_json::to_vec(&manifest()).unwrap());fs::write(base.join(MANIFEST),bytes).unwrap();assert!(read_package(&display(&base)).is_ok());
+}
+#[tokio::test]
+async fn duplicate_identity_from_new_location_updates_same_entry_and_missing_package_is_visible(){
+ let base=base();let root=base.join("original");let moved=base.join("new location");package(&root,&manifest());let store=Store::open(&base.join("metadata")).await.unwrap();let p=store.preview_local(display(&root)).await.unwrap();let id=store.register_local(display(&root),p["token"].as_str().unwrap().into()).await.unwrap()["id"].as_str().unwrap().to_owned();let mut next=manifest();next["version"]=json!("2.0.0");package(&moved,&next);let p=store.preview_local(display(&moved)).await.unwrap();assert_eq!(p["existing_id"],id);assert_eq!(store.register_local(display(&moved),p["token"].as_str().unwrap().into()).await.unwrap()["id"],id);fs::rename(moved.join("index.html"),moved.join("moved.html")).unwrap();let rows=store.run("list",json!({})).await.unwrap();assert_eq!(rows[1]["local"]["available"],false);assert!(root.join("index.html").exists());store.pool.close().await;
+}
+#[tokio::test]
+async fn failed_local_registration_cleans_new_icon_only(){
+ let base=base();let root=base.join("package");let mut m=manifest();m["icon"]=json!("icon.png");package(&root,&m);let png=base64::engine::general_purpose::STANDARD.decode("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aF9sAAAAASUVORK5CYII=").unwrap();fs::write(root.join("icon.png"),&png).unwrap();let store=Store::open(&base.join("metadata")).await.unwrap();sqlx::query("CREATE TRIGGER fail_local BEFORE INSERT ON tools WHEN NEW.kind='local' BEGIN SELECT RAISE(ABORT,'fixture failure'); END").execute(&store.pool).await.unwrap();let p=store.preview_local(display(&root)).await.unwrap();assert!(store.register_local(display(&root),p["token"].as_str().unwrap().into()).await.is_err());assert_eq!(fs::read_dir(store.root.join("icons")).unwrap().count(),0);assert_eq!(fs::read(root.join("icon.png")).unwrap(),png);store.pool.close().await;
+}
+#[tokio::test]
+async fn schema_upgrade_keeps_existing_website_fields_and_icon_reference(){
+ let base=base();fs::create_dir_all(&base).unwrap();let pool=SqlitePoolOptions::new().connect_with(SqliteConnectOptions::new().filename(base.join("tools.db")).create_if_missing(true)).await.unwrap();for s in include_str!("../../../tool_migrations/001_tools.sql").split(';').filter(|s|!s.trim().is_empty()){sqlx::query(s).execute(&pool).await.unwrap();}sqlx::query("UPDATE tools SET name='已有名称',description='保留说明',icon_file='keep-existing.png' WHERE id='densityflow'").execute(&pool).await.unwrap();pool.close().await;
+ let store=Store::open(&base).await.unwrap();let row=store.get("densityflow").await.unwrap();assert_eq!(row.name,"已有名称");assert_eq!(row.description,"保留说明");assert_eq!(row.url,"https://www.densityflow.com/");assert_eq!(row.icon_file.as_deref(),Some("keep-existing.png"));assert_eq!(row.kind,"website");assert!(row.local_json.is_none());store.pool.close().await;
+}
+#[cfg(windows)]
+#[tokio::test]
+async fn real_exe_launch_receives_arguments_working_directory_and_scoped_data(){
+ let base=base();let root=base.join("native package");fs::create_dir_all(&root).unwrap();let source=PathBuf::from(env!("CARGO_MANIFEST_DIR")).parent().unwrap().join("tests/fixtures/local_tool_probe.rs");let executable=root.join("tool probe.exe");let output=Command::new("rustc").arg(source).arg("-o").arg(&executable).output().unwrap();assert!(output.status.success(),"{}",String::from_utf8_lossy(&output.stderr));
+ let mut m=manifest();m["runtime"]=json!("exe");m["entry"]=json!("tool probe.exe");m["args"]=json!(["空格 参数","--literal=;&%PATH%"]);fs::write(root.join(MANIFEST),serde_json::to_vec(&m).unwrap()).unwrap();let store=Store::open(&base.join("metadata")).await.unwrap();let p=store.preview_local(display(&root)).await.unwrap();let id=store.register_local(display(&root),p["token"].as_str().unwrap().into()).await.unwrap()["id"].as_str().unwrap().to_owned();let marker=store.root.join("data").join(&id).join("probe-result.txt");assert!(!marker.exists());let result=store.run("open",json!({"id":id})).await.unwrap();assert_eq!(result["started"],true);assert!(result["pid"].as_u64().is_some());
+ for _ in 0..250{if marker.is_file(){break}std::thread::sleep(std::time::Duration::from_millis(20))}let result=fs::read_to_string(&marker).unwrap();assert!(result.contains("api=1"));assert!(result.contains("空格 参数"));assert!(result.contains("--literal=;&%PATH%"));let cwd=result.lines().find_map(|s|s.strip_prefix("cwd=")).unwrap();assert_eq!(key(Path::new(cwd)),key(&canonical(&root).unwrap()));store.run("remove",json!({"id":id})).await.unwrap();assert!(marker.is_file());assert!(executable.is_file());store.pool.close().await;
+}

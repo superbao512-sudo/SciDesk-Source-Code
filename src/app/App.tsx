@@ -1,0 +1,30 @@
+import {uiText} from '../locales/language';
+import {lazy,Suspense,useEffect,useState} from 'react';
+import {Navigate,Route,Routes,useNavigate} from 'react-router-dom';
+import {invoke,isTauri} from '@tauri-apps/api/core';
+import {ScreenshotEvents} from '../features/tools/screenshot/ScreenshotEvents';
+import {AppShell} from '../layouts/AppShell';
+import {Home} from '../pages/Home';
+import {ProjectManager} from '../features/projects/ProjectManager';
+import {ManualManager} from '../features/manuals/ManualManager';
+import {LearningPage} from '../features/learning/LearningPage';
+import {JournalsPage} from '../features/journals/JournalsPage';
+import {IdeasPage} from '../features/ideas/IdeasPage';
+import {HomeMessageEditor} from '../components/home/HomeMessageEditor';
+import {getAppSettings,applyAppearance} from '../features/settings/settingsService';
+const QuickPlot=lazy(()=>import('../features/tools/research/QuickPlot'));
+const PdfReader=lazy(()=>import('../features/tools/research/PdfReader'));
+const Units=lazy(()=>import('../features/tools/research/Units'));
+import {Modal} from '../components/common/Modal';
+const ToolsPage=lazy(()=>import('../features/tools/ToolsPage').then(module=>({default:module.ToolsPage})));
+const ManualEditor=lazy(()=>import('../features/manuals/editor/ManualEditor'));
+const PlotDigitizer=lazy(()=>import('../features/tools/digitizer/PlotDigitizer').then(module=>({default:module.PlotDigitizer})));
+export default function App(){
+ const [units,setUnits]=useState(false);
+ const navigate=useNavigate(),[ready,setReady]=useState(false),[error,setError]=useState(''),[editing,setEditing]=useState<'subtitle'|'message'|null>(null);
+ useEffect(()=>{let active=true;void getAppSettings().then(config=>{if(active){applyAppearance(config);setReady(true)}}).catch(reason=>{if(active)setError(String(reason))});return()=>{active=false}},[]);
+ useEffect(()=>{const shortcut=(event:KeyboardEvent)=>{if(event.altKey&&!event.ctrlKey&&!event.metaKey&&event.code==='KeyU'){event.preventDefault();if(!event.repeat)setUnits(v=>!v);return}if((event.ctrlKey||event.metaKey)&&event.key.toLowerCase()==='k'){event.preventDefault();navigate('/',{state:{homeSearch:true,requestId:crypto.randomUUID()}})}};window.addEventListener('keydown',shortcut);return()=>window.removeEventListener('keydown',shortcut)},[navigate]);
+ useEffect(()=>{if(!ready||!isTauri())return;void(async()=>{await invoke('configure_main_window');await invoke('boot_log',{stage:'FRONTEND_READY',detail:'Home mounted; no startup animation'});await invoke('show_main_window')})().catch(reason=>setError(String(reason)))},[ready]);
+ if(!ready)return <div className="startup"><div className="startup-brand">SciDesk</div>{error&&<p role="alert">{error}</p>}</div>;
+ return <AppShell><ScreenshotEvents/>{error&&<p role="alert">{error}</p>}<Routes><Route path="/" element={<Home onEdit={setEditing}/>}/><Route path="/projects" element={<ProjectManager/>}/><Route path="/ideas" element={<IdeasPage/>}/><Route path="/journals" element={<JournalsPage/>}/><Route path="/projects/:projectId" element={<ProjectManager/>}/><Route path="/tools" element={<Suspense fallback={<p role="status">{uiText("正在加载工具…")}</p>}><ToolsPage/></Suspense>}/><Route path="/tools/quick-plot" element={<Suspense fallback={<p>{uiText("正在打开绘图工具…")}</p>}><QuickPlot/></Suspense>}/><Route path="/tools/pdf-reader" element={<Suspense fallback={<p>{uiText("正在打开 PDF 阅读器…")}</p>}><PdfReader/></Suspense>}/><Route path="/tools/units" element={<Suspense fallback={<p>{uiText("正在打开单位换算…")}</p>}><Units/></Suspense>}/><Route path="/tools/manual-editor" element={<Suspense fallback={<p role="status">{uiText("正在打开教学手册…")}</p>}><ManualEditor/></Suspense>}/><Route path="/tools/plot-digitizer" element={<Suspense fallback={<p role="status">{uiText("正在加载曲线数据提取…")}</p>}><PlotDigitizer/></Suspense>}/><Route path="/learning" element={<LearningPage/>}/><Route path="/manuals" element={<ManualManager/>}/><Route path="/manuals/:manualId" element={<ManualManager/>}/><Route path="*" element={<Navigate to="/" replace/>}/></Routes>{units&&<Modal title={uiText("物理单位与公式速查")} className="rs-unit-dialog" onClose={()=>setUnits(false)}><Suspense fallback={<p>{uiText("正在加载…")}</p>}><Units/></Suspense></Modal>}{editing&&<HomeMessageEditor field={editing} onClose={()=>setEditing(null)}/>}</AppShell>;
+}

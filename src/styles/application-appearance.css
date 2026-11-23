@@ -1,0 +1,83 @@
+:root{
+ --page-surface-bg:#fff;
+ --sidebar-width:230px;
+ --shell-gap:10px;
+}
+html,body,#root{width:100%;height:100%;max-width:100%;min-width:0;margin:0;overflow:hidden}
+#root .startup-root{width:100%;height:100%;min-width:0;min-height:0}
+.app-shell{position:relative;isolation:isolate;width:100%;max-width:100%;height:100%;min-width:0;min-height:0;overflow:hidden;display:grid;grid-template-columns:var(--sidebar-width) minmax(0,1fr);gap:var(--shell-gap);padding:var(--shell-gap)}
+/* Separate the native title area from the full application body without shifting its layout. */
+.app-shell::before{content:"";position:absolute;inset:0 0 auto;height:1px;background:#cfd5de;z-index:30;pointer-events:none}
+.global-background{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.global-background-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;pointer-events:none;filter:none;transform:none}
+.app-shell .app-surface{position:relative;z-index:1;min-width:0;min-height:0;background:var(--page-surface-bg);border:1px solid transparent;border-radius:0;box-shadow:none;transition:none}
+.app-shell .sidebar{inset:auto;width:100%;height:100%;padding:36px 14px 0 18px;display:flex;flex-direction:column;overflow:hidden}
+.app-shell .sidebar-brand,.app-shell .sidebar-label,.app-shell .sidebar-bottom{flex-shrink:0}
+.app-shell .sidebar nav{min-height:0;overflow-y:auto;flex:1}
+.app-shell .workspace{position:relative;z-index:1;margin-left:0;padding-bottom:0;height:100%;min-width:0;min-height:0;display:grid;grid-template-rows:minmax(0,1fr);gap:0}
+.app-shell .main-surface{display:flex;flex-direction:column;overflow:hidden}
+.page-scroll-container{position:relative;flex:1;min-height:0;min-width:0;overflow:auto;background:transparent}
+.app-shell .home-page{height:100%;background:transparent}
+.home-shell .main-surface{background:transparent;border-color:transparent;box-shadow:none}
+.home-shell .home-page,.home-shell .home-hero,.home-shell .home-hero-content{width:100%;max-width:100%;min-width:0;min-height:0}
+.home-shell .home-subtitle,.home-shell .home-message p{overflow-wrap:anywhere}
+.app-shell .statusbar{position:relative;inset:auto;flex-shrink:0;background:#fff}
+.app-shell .sidebar-brand{background:transparent}
+.app-shell .home-hero-search{background:#fff}
+@media(max-width:1440px){
+ .home-shell .home-hero-search{max-width:calc(100% - 32px)}
+}
+@media(max-width:1100px){
+ .home-shell{--sidebar-width:220px;--shell-gap:8px}
+ .home-shell .sidebar{padding-top:24px}
+ .home-shell .sidebar-brand{height:80px;margin-bottom:12px}
+ .home-shell .home-hero-search input{font-size:max(14px,calc(18px * var(--home-scale)))}
+ .home-shell .home-hero-search{height:max(40px,var(--search-height))}
+ .home-shell .home-hero-search>svg{width:max(18px,calc(29px * var(--home-scale)));height:max(18px,calc(29px * var(--home-scale)))}
+ .home-shell .home-hero-search kbd{font-size:max(11px,calc(16px * var(--home-scale)))}
+ .home-shell .home-subtitle{font-size:max(18px,var(--subtitle-size))}
+ .home-shell .home-greeting h2{font-size:max(22px,calc(38px * var(--home-scale)))}
+ .home-shell .home-message{font-size:max(12px,calc(19px * var(--home-scale)))}
+}
+@media(max-height:600px){
+ .home-shell .sidebar{padding-top:16px}
+ .home-shell .sidebar-brand{height:64px;margin-bottom:8px}
+}
+@media(prefers-reduced-motion:reduce){.app-shell .app-surface{transition:none}}
+
+/* Fit the left column to its unchanged brand, navigation and footer content. */
+.app-shell.home-shell{grid-template-columns:max-content minmax(0,1fr)}
+.app-shell.home-shell .sidebar{
+ margin-block:calc(-1 * var(--shell-gap));
+ margin-inline-start:calc(-1 * var(--shell-gap));
+ inline-size:max-content;
+ block-size:calc(100% + 2 * var(--shell-gap));
+ border:0;
+ border-radius:0;
+ box-shadow:none;
+}
+.home-shell .sidebar>.sidebar-brand{inline-size:max-content}
+
+/* Preserve the expanded navigation's existing surface. */
+.app-shell .sidebar{background:#f5f6f8}
+.app-shell .sidebar-toggle{position:absolute;top:8px;right:12px;width:30px;height:28px}
+.shell-preference-error{padding:8px 14px;background:#fff7ed;color:#9b2c2c;font-size:12px}
+.app-shell .sidebar>.sidebar-brand{position:relative}
+.app-shell .sidebar>.sidebar-brand::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:1px;background:var(--border);pointer-events:none}
+
+/* The divider does not change the navigation's intrinsic width. */
+.app-shell .sidebar::after{content:"";position:absolute;inset:0 0 0 auto;width:1px;background:var(--border);pointer-events:none}
+/* Functional pages form one white surface, without the homepage's outer spacing or frame. */
+.app-shell.projects-shell{--shell-gap:0px;background:#fff}
+.projects-shell .main-surface{border:0;box-shadow:none}
+
+/* Keep the same navigation targets when only their icons are visible. */
+.app-shell.sidebar-collapsed .sidebar{inline-size:64px;padding:44px 10px 0;background:transparent}
+.app-shell.sidebar-collapsed .sidebar::after,.app-shell.sidebar-collapsed .sidebar-brand::after{background:transparent}
+.app-shell.sidebar-collapsed .sidebar-toggle{right:17px;background:#fff;border:1px solid var(--border)}
+.app-shell.sidebar-collapsed .sidebar-brand{inline-size:44px;height:64px;max-width:none;justify-content:center;margin-bottom:16px}
+.app-shell.sidebar-collapsed .sidebar-logo{width:36px;height:36px}
+.app-shell.sidebar-collapsed :is(.sidebar-brand-copy,.sidebar-label,.sidebar-nav-text,.sidebar-bottom){display:none}
+.app-shell.sidebar-collapsed .sidebar nav>a{justify-content:center;width:44px;padding:0;gap:0;background:#fff;border:1px solid var(--border);color:var(--text-secondary)}
+.app-shell.sidebar-collapsed .sidebar nav>a:hover{background:var(--accent-soft)}
+.app-shell.sidebar-collapsed .sidebar nav>a.active{background:var(--accent-selected);color:var(--accent-primary);border-color:var(--accent-ring)}

@@ -1,0 +1,3 @@
+.project-file-content.file-drop-active{outline:2px dashed var(--accent-primary,#2878e6);outline-offset:-3px}
+.project-files-table tr.file-drop-folder{background:#eaf2ff;outline:1px solid #a4c5f3;outline-offset:-1px}
+.project-files-table tbody tr[data-file-drag]{user-select:none;touch-action:pan-y}

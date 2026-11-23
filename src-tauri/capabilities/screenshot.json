@@ -1,0 +1,6 @@
+{
+  "identifier": "screenshot-windows",
+  "description": "Session-only capture and pin windows; no SQL or filesystem plugin access",
+  "windows": ["capture-*", "pin-*"],
+  "permissions": ["core:default"]
+}

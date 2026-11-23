@@ -1,0 +1,15 @@
+.sidebar nav > a.active,
+.sidebar nav > a.active:hover,
+.settings-categories button.active,
+.settings-categories button.active:hover,
+.button.active {
+  color: var(--accent-primary);
+  background: var(--accent-selected);
+}
+.button.active { border-color: var(--accent-ring); }
+.settings-categories button:hover,
+.sidebar nav > a:not(.active):hover,
+.icon-button:not(:disabled):hover { background: var(--accent-soft); color: var(--accent-primary); }
+.button.primary { background: var(--accent-primary); border-color: var(--accent-primary); }
+.button.primary:not(:disabled):hover { background: var(--accent-hover); border-color: var(--accent-hover); }
+input[type="checkbox"], input[type="radio"], input[type="range"] { accent-color: var(--accent-primary); }
